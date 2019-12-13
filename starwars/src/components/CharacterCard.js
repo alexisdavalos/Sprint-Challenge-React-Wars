@@ -12,7 +12,6 @@ const CharacterCard = (props) => {
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
-    console.log(props.data.url)
 
 const NewCard = styled(Card)`
     width:30%;

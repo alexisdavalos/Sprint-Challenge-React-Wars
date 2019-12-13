@@ -2,23 +2,25 @@ import React, {useState, useEffect} from 'react';
 import CharacterCard from "./CharacterCard";
 import axios from "axios";
 import styled from 'styled-components';
-import { Spinner, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Spinner} from 'reactstrap';
+import Paginations from './Pagination/Pagination'
 
 
 const StarWarsGrid = () => {
     //set useState
     const [charData, setCharData] = useState([]);
+    const [page, setNextPage] = useState("https://swapi.co/api/people");
     //set useEffect
     useEffect(() =>{
-        axios.get("https://swapi.co/api/people")
+        axios.get(page)
         .then(response =>{
-            console.log(response.data); 
+            // console.log(response.data); 
             setCharData(response.data);
         })
         .catch(error =>{
             console.log("This is not the data your are looking for...", error);
         }) //error catch
-    },[]) //end use effect
+    },[page]) //end use effect
 
     //pass character data into CharacterCard Component
     //  console.log(charData.results);
@@ -56,7 +58,7 @@ const StarWarsGrid = () => {
                     return <CharCard key ={item.url} data={item}/>
                 })}   
             </Container>
-            <Pagination/>
+            <Paginations page={page} setNextPage={setNextPage} charData={charData}/>
         </Wrapper>
           
       
