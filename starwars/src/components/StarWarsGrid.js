@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import CharacterCard from "./CharacterCard";
 import axios from "axios";
+import styled from 'styled-components';
+import { Spinner, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
 
 const StarWarsGrid = () => {
     //set useState
     const [charData, setCharData] = useState([]);
-    const proxy = "https://cors-anywhere.herokuapp.com/"
-    const url = "https://swapi.co/api/people";
     //set useEffect
     useEffect(() =>{
-        axios .get(proxy+url)
+        axios.get("https://swapi.co/api/people")
         .then(response =>{
             console.log(response.data); 
             setCharData(response.data);
@@ -22,18 +22,42 @@ const StarWarsGrid = () => {
 
     //pass character data into CharacterCard Component
     //  console.log(charData.results);
-
-
+    const Container = styled.div`
+       display:flex;
+       justify-content:center;
+       flex-wrap:wrap;
+    `
+    const Wrapper = styled.div`
+        width:80%;
+        margin: 0 auto;
+    `
+    const CharCard = styled(CharacterCard)`
+        width: 25%;
+    `
+    const Loader = styled.div`
+        display:flex;
+        justify-content:center;
+        align-item:center;
+        padding:10%;
+    `
     if (!charData.results){
-        return <h3>Loading...</h3>
+        return (
+        <Loader>
+             <Spinner color="dark" />
+            <h3>Loading...</h3>
+        </Loader>
+       
+        )
       }else{
         return (
-            <div>
+        <Wrapper>
+            <Container>
                 {charData.results.map((item,index) =>{
-                    return <CharacterCard key ={item.url} data={item}/>
-                })}
-            </div>
-        
+                    return <CharCard key ={item.url} data={item}/>
+                })}   
+            </Container>
+            <Pagination/>
+        </Wrapper>
           
       
         );
