@@ -21,26 +21,50 @@ const Paginations = (props) => {
   `
 //   console.log(`This is loggin from Pagination.js`);
 //   console.log(props.page);
-//   console.log(props.charData);
+  console.log(props.charData);
   const nextPage = () =>{
-    //   props.setNextPage(props.charData.next);
+      props.setNextPage(props.charData.next);
     console.log(`This is loggin After NextPage Click`);
       console.log(props.charData);
   }
   const lastPage = () =>{
-    props.setNextPage(props.charData.next);
+    if(props.charData.previous !== null){
+        props.setNextPage(props.charData.previous);
+    }
+    console.log(`This is loggin After LastPage Click`);
+      console.log(props.charData.previous);
+  
 }
+
+if(props.charData.previous === null){ //if first page only render next button
+  return (
+    <Pages aria-label="Page navigation example">
+      <PaginationItem>
+        <AnchorLink last href="#" onClick={() => nextPage()} />
+      </PaginationItem>
+    </Pages>
+  );//end return
+}else if(props.charData.next === null){ //if last page only render last button
   return (
     <Pages aria-label="Page navigation example">
     <PaginationItem>
-        <AnchorLink first href="#" onClick={() => nextPage()} />
-      </PaginationItem>
-      
-      <PaginationItem>
-        <AnchorLink last href="#" onClick={() => lastPage()} />
+        <AnchorLink first href="#" onClick={() => lastPage()} />
       </PaginationItem>
     </Pages>
-  );
+  );//end return
+}else{ //otherwise render both
+  return (
+    <Pages aria-label="Page navigation example">
+    <PaginationItem>
+        <AnchorLink first href="#" onClick={() => lastPage()} />
+      </PaginationItem>
+      <PaginationItem>
+        <AnchorLink last href="#" onClick={() => nextPage()} />
+      </PaginationItem>
+    </Pages>
+  );//end return
+}
+ 
 }
 
 export default Paginations;

@@ -17,12 +17,12 @@ const NewCard = styled(Card)`
     width:30%;
     margin:3%;
     box-shadow: 6px 6px 20px 0px #000000ba;
-    background: #000000ad;
+    background: #000000ad !important;
 
 `
 const Title = styled(CardTitle)`
     font-weight:bold;
-    color:white;
+    color:#c81f26;
 `
 const Subtitle = styled(CardSubtitle)`
     color:white;

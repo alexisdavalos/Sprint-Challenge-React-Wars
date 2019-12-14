@@ -3,7 +3,8 @@ import CharacterCard from "./CharacterCard";
 import axios from "axios";
 import styled from 'styled-components';
 import { Spinner} from 'reactstrap';
-import Paginations from './Pagination/Pagination'
+import Paginations from './Pagination/Pagination';
+import Heading from './Heading/Heading';
 
 
 const StarWarsGrid = () => {
@@ -52,6 +53,8 @@ const StarWarsGrid = () => {
         )
       }else{
         return (
+        <div>
+        <Heading/>
         <Wrapper>
             <Container>
                 {charData.results.map((item,index) =>{
@@ -60,7 +63,7 @@ const StarWarsGrid = () => {
             </Container>
             <Paginations page={page} setNextPage={setNextPage} charData={charData}/>
         </Wrapper>
-          
+        </div>
       
         );
       }
