@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import StarWarsGrid from "./components/StarWarsGrid";
-import Nav from "./components/Nav/Nav";
+import Navigation from "./components/Nav/Navigation";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Nav/>
+      <Navigation/>
       <StarWarsGrid/>
     </div>
   );
