@@ -24,16 +24,22 @@ In this challenge, create a web page that presents a styled list of Star Wars ch
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
-- [ ] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
-
-- [ ] What does it mean to _think_ in react?
-
-- [ ] Describe state.
-
-- [ ] Describe props.
-
-- [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
-
+- [x] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
+    - ReactJS is a declarative, component-based Javascript library for building user interfaces. ReactJS attempts to solve the the following problems:
+    + seemless updating of the DOM to reflect user interaction without reloading the page
+    + making changes to one or more areas of a website without affecting other areas
+- [x] What does it mean to _think_ in react?
+    -Thinking in React means thinking about a website in components, which are managed individually and internally by state and props.
+    It means thinking about how to rerender a page when someone interacts with it rather than changing the page itself
+- [x] Describe state.
+    -State is a Javascript object managed within a component that determines how that component renders and behaves,
+    thus allowing us to create dynamic and interactive components, and consequently, a dynamic and interactive website.
+- [x] Describe props.
+    -Props are also Javascript objects and can be described as the properties, or data, we pass to a component which then uses
+    both props and state to construct the html of a website.
+- [x] What are side effects, and how do you sync effects in a React component to state or prop changes?
+    -A side effect is anything that affects something outside the scope of the fucntion being exectured, i.e. fetching data from an API or manually manipulating the DOM.
+    We can use useEffect to sync effects in a component to state or prop changes. useEffect will watch for a change in state or props and execute the instructed side effect.
 ## Project Set Up
 
 Follow these steps to set up and work on your project:
